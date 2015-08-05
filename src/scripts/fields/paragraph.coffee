@@ -12,7 +12,7 @@ Formbuilder.registerField 'paragraph',
   """
 
   addButton: """
-    <span class="symbol">&#182;</span> Paragraph
+    <span class="symbol">&#182;</span> 文本段落
   """
 
   defaultAttributes: (attrs) ->

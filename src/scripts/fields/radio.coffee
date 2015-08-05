@@ -16,7 +16,7 @@ Formbuilder.registerField 'radio',
       <div class='other-option'>
         <label class='fb-option'>
           <input type='radio' />
-          Other
+          其它
         </label>
 
         <input type='text' />
@@ -29,7 +29,7 @@ Formbuilder.registerField 'radio',
   """
 
   addButton: """
-    <span class="symbol"><span class="fa fa-circle-o"></span></span> Multiple Choice
+    <span class="symbol"><span class="fa fa-circle-o"></span></span> 单选
   """
 
   defaultAttributes: (attrs) ->

@@ -16,7 +16,7 @@ Formbuilder.registerField 'checkboxes',
       <div class='other-option'>
         <label class='fb-option'>
           <input type='checkbox' />
-          Other
+          其它
         </label>
 
         <input type='text' />
@@ -29,7 +29,7 @@ Formbuilder.registerField 'checkboxes',
   """
 
   addButton: """
-    <span class="symbol"><span class="fa fa-square-o"></span></span> Checkboxes
+    <span class="symbol"><span class="fa fa-square-o"></span></span> 多选
   """
 
   defaultAttributes: (attrs) ->

@@ -1,3 +1,15 @@
+fork form https://github.com/dobtco/formbuilder/
+主要更改如下：
+formbuilder  bower依赖了"ie8-node-enum": "https://gist.github.com/ajb/8902451/raw/b68459289526cb76c2e22416d98d0dbd0b722fa0/ie8_node_enum.js"
+这样写导致bower install 时报ssl错误，把地址直接copy到浏览器里访问就能看到错误。
+因此，verdor不在由依赖文件压缩而成，直接用的是https://github.com/dobtco/formbuilder/blob/gh-pages/vendor/js/vendor.js文件，
+copy到本地，保存路径为：src/jsDep/vendor.js。
+原本依赖配置可以查看：https://github.com/dobtco/formbuilder/blob/gh-pages/bower.json
+
+另外就是汉化。
+
+
+
 Formbuilder.js
 ============
 

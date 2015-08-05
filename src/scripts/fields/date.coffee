@@ -4,6 +4,12 @@ Formbuilder.registerField 'date',
 
   view: """
     <div class='input-line'>
+    
+     <span class='year'>
+        <input type="text" />
+        <label>YYYY</label>
+      </span>
+
       <span class='month'>
         <input type="text" />
         <label>MM</label>
@@ -18,15 +24,12 @@ Formbuilder.registerField 'date',
 
       <span class='above-line'>/</span>
 
-      <span class='year'>
-        <input type="text" />
-        <label>YYYY</label>
-      </span>
+     
     </div>
   """
 
   edit: ""
 
   addButton: """
-    <span class="symbol"><span class="fa fa-calendar"></span></span> Date
+    <span class="symbol"><span class="fa fa-calendar"></span></span> 日期
   """

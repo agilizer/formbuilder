@@ -12,7 +12,7 @@ Formbuilder.registerField 'text',
   """
 
   addButton: """
-    <span class='symbol'><span class='fa fa-font'></span></span> Text
+    <span class='symbol'><span class='fa fa-font'></span></span> 文本
   """
 
   defaultAttributes: (attrs) ->

@@ -358,7 +358,7 @@ class Formbuilder
   @helpers:
     defaultFieldAttrs: (field_type) ->
       attrs = {}
-      attrs[Formbuilder.options.mappings.LABEL] = 'Untitled'
+      attrs[Formbuilder.options.mappings.LABEL] = '请输入描述'
       attrs[Formbuilder.options.mappings.FIELD_TYPE] = field_type
       attrs[Formbuilder.options.mappings.REQUIRED] = true
       attrs['field_options'] = {}
@@ -393,9 +393,9 @@ class Formbuilder
       LENGTH_UNITS: 'field_options.min_max_length_units'
 
     dict:
-      ALL_CHANGES_SAVED: 'All changes saved'
-      SAVE_FORM: 'Save form'
-      UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!'
+      ALL_CHANGES_SAVED: '当前已经保存'
+      SAVE_FORM: '保存数据'
+      UNSAVED_CHANGES: '您的当前编辑没有保存数据，如果离开，将丢失数据!'
 
   @fields: {}
   @inputFields: {}
