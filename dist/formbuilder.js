@@ -667,16 +667,6 @@
 }).call(this);
 
 (function() {
-  Formbuilder.registerField('date', {
-    order: 20,
-    view: "<div class='input-line'>\n\n <span class='year'>\n    <input type=\"text\" />\n    <label>YYYY</label>\n  </span>\n\n  <span class='month'>\n    <input type=\"text\" />\n    <label>MM</label>\n  </span>\n\n  <span class='above-line'>/</span>\n\n  <span class='day'>\n    <input type=\"text\" />\n    <label>DD</label>\n  </span>\n\n  <span class='above-line'>/</span>\n\n \n</div>",
-    edit: "",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-calendar\"></span></span> 日期"
-  });
-
-}).call(this);
-
-(function() {
   Formbuilder.registerField('email', {
     order: 40,
     view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' />",
@@ -711,16 +701,6 @@
       attrs.field_options.size = 'small';
       return attrs;
     }
-  });
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('price', {
-    order: 45,
-    view: "<div class='input-line'>\n  <span class='above-line'>$</span>\n  <span class='dolars'>\n    <input type='text' />\n    <label>Dollars</label>\n  </span>\n  <span class='above-line'>.</span>\n  <span class='cents'>\n    <input type='text' />\n    <label>Cents</label>\n  </span>\n</div>",
-    edit: "",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-usd\"></span></span> 价格"
   });
 
 }).call(this);
@@ -768,16 +748,6 @@
       attrs.field_options.size = 'small';
       return attrs;
     }
-  });
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('website', {
-    order: 35,
-    view: "<input type='text' placeholder='http://' />",
-    edit: "",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-link\"></span></span> 链接"
   });
 
 }).call(this);
@@ -905,9 +875,7 @@ __p += '<div class=\'fb-edit-section-header\'>长度限制</div>\n\n最少\n<inp
 ((__t = ( Formbuilder.options.mappings.MINLENGTH )) == null ? '' : __t) +
 '" style="width: 30px" />\n\n&nbsp;&nbsp;\n\n最大\n<input type="text" data-rv-input="model.' +
 ((__t = ( Formbuilder.options.mappings.MAXLENGTH )) == null ? '' : __t) +
-'" style="width: 30px" />\n\n&nbsp;&nbsp;\n\n<select data-rv-value="model.' +
-((__t = ( Formbuilder.options.mappings.LENGTH_UNITS )) == null ? '' : __t) +
-'" style="width: auto;">\n  <option value="characters" selected="">中文字数</option>\n</select>\n';
+'" style="width: 30px" />\n\n&nbsp;&nbsp;\n\n';
 
 }
 return __p
@@ -960,7 +928,7 @@ this["Formbuilder"]["templates"]["edit/units"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-edit-section-header\'>Units</div>\n<input type="text" data-rv-input="model.' +
+__p += '<div class=\'fb-edit-section-header\'>单位</div>\n<input type="text" data-rv-input="model.' +
 ((__t = ( Formbuilder.options.mappings.UNITS )) == null ? '' : __t) +
 '" />\n';
 

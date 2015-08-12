@@ -1,0 +1,82 @@
+{
+  "fields": [
+    {
+      "label": "文本框",
+      "field_type": "text",
+      "required": true,
+      "field_options": {
+        "size": "small",
+        "description": "adsfasfasdfadsfasdfsadf",
+        "minlength": "20",
+        "maxlength": "30",
+        "min_max_length_units": "characters"
+      },
+      "cid": "c18"
+    },
+    {
+      "label": "请输入描述",
+      "field_type": "text",
+      "required": true,
+      "field_options": {
+        "size": "small"
+      },
+      "cid": "c2"
+    },
+    {
+      "label": "请输入描述",
+      "field_type": "checkboxes",
+      "required": true,
+      "field_options": {
+        "options": [
+          {
+            "label": "a",
+            "checked": false
+          },
+          {
+            "label": "b",
+            "checked": false
+          }
+        ],
+        "include_other_option": true
+      },
+      "cid": "c6"
+    },
+    {
+      "label": "请输入描述",
+      "field_type": "radio",
+      "required": true,
+      "field_options": {
+        "options": [
+          {
+            "label": "c",
+            "checked": false
+          },
+          {
+            "label": "d",
+            "checked": false
+          }
+        ],
+        "include_other_option": true
+      },
+      "cid": "c10"
+    },
+    {
+      "label": "请输入描述",
+      "field_type": "checkboxes",
+      "required": true,
+      "field_options": {
+        "options": [
+          {
+            "label": "e",
+            "checked": false
+          },
+          {
+            "label": "f",
+            "checked": false
+          }
+        ]
+      },
+      "cid": "c14"
+    }
+  ]
+}
