@@ -667,6 +667,29 @@
 }).call(this);
 
 (function() {
+  Formbuilder.registerField('select', {
+    order: 24,
+    view: "<select>\n  <% if (rf.get(Formbuilder.options.mappings.INCLUDE_BLANK)) { %>\n    <option value=''></option>\n  <% } %>\n\n  <% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n    <option <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'selected' %>>\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </option>\n  <% } %>\n</select>",
+    edit: "<%= Formbuilder.templates['edit/options']({ includeBlank: true }) %>",
+    addButton: "<span  class=\"symbol\"><span class=\"fa fa-caret-down\"></span></span> 下拉选项",
+    defaultAttributes: function(attrs) {
+      attrs.field_options.options = [
+        {
+          label: "",
+          checked: false
+        }, {
+          label: "",
+          checked: false
+        }
+      ];
+      attrs.field_options.include_blank_option = false;
+      return attrs;
+    }
+  });
+
+}).call(this);
+
+(function() {
   Formbuilder.registerField('email', {
     order: 40,
     view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' />",
@@ -706,6 +729,16 @@
 }).call(this);
 
 (function() {
+  Formbuilder.registerField('progress', {
+    order: 30,
+    view: "<input type='text' />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
+    edit: "<%= Formbuilder.templates['edit/min_max_score']() %>",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-heart\"></span></span>评分"
+  });
+
+}).call(this);
+
+(function() {
   Formbuilder.registerField('radio', {
     order: 15,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='radio' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='radio' />\n      其它\n    </label>\n\n    <input type='text' />\n  </div>\n<% } %>",
@@ -723,17 +756,6 @@
       ];
       return attrs;
     }
-  });
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('section_break', {
-    order: 0,
-    type: 'non_input',
-    view: "<label class='section-name'><%= rf.get(Formbuilder.options.mappings.LABEL) %></label>\n<p><%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %></p>",
-    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add a longer description to this field'></textarea>",
-    addButton: "<span class='symbol'><span class='fa fa-minus'></span></span> 分隔符"
   });
 
 }).call(this);
@@ -876,6 +898,20 @@ __p += '<div class=\'fb-edit-section-header\'>长度限制</div>\n\n最少\n<inp
 '" style="width: 30px" />\n\n&nbsp;&nbsp;\n\n最大\n<input type="text" data-rv-input="model.' +
 ((__t = ( Formbuilder.options.mappings.MAXLENGTH )) == null ? '' : __t) +
 '" style="width: 30px" />\n\n&nbsp;&nbsp;\n\n';
+
+}
+return __p
+};
+
+this["Formbuilder"]["templates"]["edit/min_max_score"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class=\'fb-edit-section-header\'>起始值/结束值</div>\n\n起始值\n<input type="number" data-rv-input="model.' +
+((__t = ( Formbuilder.options.mappings.MIN )) == null ? '' : __t) +
+'" style="width: 50px" />\n\n&nbsp;&nbsp;\n\n结束值\n<input type="number" data-rv-input="model.' +
+((__t = ( Formbuilder.options.mappings.MAX )) == null ? '' : __t) +
+'" style="width: 50px" />\n';
 
 }
 return __p
