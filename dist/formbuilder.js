@@ -668,100 +668,6 @@
 }).call(this);
 
 (function() {
-  Formbuilder.registerField('select', {
-    order: 24,
-    view: "<select>\n  <% if (rf.get(Formbuilder.options.mappings.INCLUDE_BLANK)) { %>\n    <option value=''></option>\n  <% } %>\n\n  <% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n    <option <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'selected' %>>\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </option>\n  <% } %>\n</select>",
-    edit: "<%= Formbuilder.templates['edit/options']({ includeBlank: true }) %>",
-    addButton: "<span  class=\"symbol\"><span class=\"fa fa-caret-down\"></span></span> 下拉选项",
-    defaultAttributes: function(attrs) {
-      attrs.field_options.options = [
-        {
-          label: "",
-          checked: false
-        }, {
-          label: "",
-          checked: false
-        }
-      ];
-      attrs.field_options.include_blank_option = false;
-      return attrs;
-    }
-  });
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('email', {
-    order: 40,
-    view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' />",
-    edit: "",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-envelope-o\"></span></span> 邮箱"
-  });
-
-}).call(this);
-
-(function() {
-
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('number', {
-    order: 30,
-    view: "<input type='text' />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/integer_only']() %>\n<%= Formbuilder.templates['edit/text_right']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> 数字"
-  });
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('paragraph', {
-    order: 5,
-    view: "<textarea class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>'></textarea>",
-    edit: "<%= Formbuilder.templates['edit/size']() %>\n<%= Formbuilder.templates['edit/min_max_length']() %>",
-    addButton: "<span class=\"symbol\">&#182;</span> 文本段落",
-    defaultAttributes: function(attrs) {
-      attrs.field_options.size = 'small';
-      return attrs;
-    }
-  });
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('progress', {
-    order: 30,
-    view: "<input type='text' />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/min_max_score']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-heart\"></span></span>评分"
-  });
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('radio', {
-    order: 15,
-    view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='radio' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='radio' />\n      其它\n    </label>\n\n    <input type='text' />\n  </div>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>\n<%= Formbuilder.templates['edit/text_right']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-circle-o\"></span></span> 单选",
-    defaultAttributes: function(attrs) {
-      attrs.field_options.options = [
-        {
-          label: "",
-          checked: false
-        }, {
-          label: "",
-          checked: false
-        }
-      ];
-      return attrs;
-    }
-  });
-
-}).call(this);
-
-(function() {
   Formbuilder.registerField('text', {
     order: 0,
     view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' />",
@@ -1082,7 +988,7 @@ this["Formbuilder"]["templates"]["view/base"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'subtemplate-wrapper\'>\n  <div class=\'cover\'></div>\n  ' +
+__p += '<div class=\'subtemplate-wrapper\'>\n  <div class=\'cover\'> </div>\n  ' +
 ((__t = ( Formbuilder.templates['view/label']({rf: rf}) )) == null ? '' : __t) +
 '\n\n  ' +
 ((__t = ( Formbuilder.fields[rf.get(Formbuilder.options.mappings.FIELD_TYPE)].view({rf: rf}) )) == null ? '' : __t) +
