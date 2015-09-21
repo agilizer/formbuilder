@@ -379,7 +379,8 @@ class Formbuilder
       UNITS: 'field_options.units'
       LABEL: 'label'
       FIELD_TYPE: 'field_type'
-      REQUIRED: 'required'
+      REQUIRED: 'required',
+      RIGHT_VALUE: 'right_value',
       ADMIN_ONLY: 'admin_only'
       OPTIONS: 'field_options.options'
       DESCRIPTION: 'field_options.description'

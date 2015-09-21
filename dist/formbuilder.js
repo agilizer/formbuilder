@@ -577,6 +577,7 @@
         LABEL: 'label',
         FIELD_TYPE: 'field_type',
         REQUIRED: 'required',
+        RIGHT_VALUE: 'right_value',
         ADMIN_ONLY: 'admin_only',
         OPTIONS: 'field_options.options',
         DESCRIPTION: 'field_options.description',
@@ -648,7 +649,7 @@
   Formbuilder.registerField('checkboxes', {
     order: 10,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='checkbox' />\n      其它\n    </label>\n\n    <input type='text' />\n  </div>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>",
+    edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>\n<%= Formbuilder.templates['edit/text_right']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-square-o\"></span></span> 多选",
     defaultAttributes: function(attrs) {
       attrs.field_options.options = [
@@ -708,7 +709,7 @@
   Formbuilder.registerField('number', {
     order: 30,
     view: "<input type='text' />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/integer_only']() %>",
+    edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/integer_only']() %>\n<%= Formbuilder.templates['edit/text_right']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> 数字"
   });
 
@@ -742,7 +743,7 @@
   Formbuilder.registerField('radio', {
     order: 15,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='radio' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='radio' />\n      其它\n    </label>\n\n    <input type='text' />\n  </div>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>",
+    edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>\n<%= Formbuilder.templates['edit/text_right']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-circle-o\"></span></span> 单选",
     defaultAttributes: function(attrs) {
       attrs.field_options.options = [
@@ -764,7 +765,7 @@
   Formbuilder.registerField('text', {
     order: 0,
     view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' />",
-    edit: "<%= Formbuilder.templates['edit/size']() %>\n<%= Formbuilder.templates['edit/min_max_length']() %>",
+    edit: "<%= Formbuilder.templates['edit/size']() %>\n<%= Formbuilder.templates['edit/min_max_length']() %>\n<%= Formbuilder.templates['edit/text_right']() %>",
     addButton: "<span class='symbol'><span class='fa fa-font'></span></span> 文本",
     defaultAttributes: function(attrs) {
       attrs.field_options.size = 'small';
@@ -955,6 +956,18 @@ with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>显示大小</div>\n<select data-rv-value="model.' +
 ((__t = ( Formbuilder.options.mappings.SIZE )) == null ? '' : __t) +
 '">\n  <option value="small">小</option>\n  <option value="medium">正常</option>\n  <option value="large">大</option>\n</select>\n';
+
+}
+return __p
+};
+
+this["Formbuilder"]["templates"]["edit/text_right"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class=\'fb-edit-section-header\'>正确答案</div>\n<input type="text" placeholder="\'不限\'表示所有都可以" value="不限" data-rv-input="model.' +
+((__t = ( Formbuilder.options.mappings.RIGHT_VALUE )) == null ? '' : __t) +
+'" />\n';
 
 }
 return __p
