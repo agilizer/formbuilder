@@ -4,19 +4,21 @@ Formbuilder.registerField 'radio',
 
   view: """
     <% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>
-      <div>
-        <label class='fb-option'>
-          <input type='radio' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick="javascript: return false;" />
-          <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>
-        </label>
+      <% domId = 'radio_' + i%>
+      <div class='checkbox checkbox'>
+          <input type='radio' id='<%=domId%>' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick="javascript: return false;" />
+          <label for="<%= domId%>">
+            <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>
+          </label>
       </div>
     <% } %>
 
     <% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>
-      <div class='other-option'>
-        <label class='fb-option'>
-          <input type='radio' />
-          其它
+      <div class='other-option checkbox checkbox'>
+          <input type='radio' id='otherRadio' />
+          <label for="otherRadio">
+            其它
+          </label>
         </label>
 
         <input type='text' />
