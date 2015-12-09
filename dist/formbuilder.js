@@ -729,6 +729,16 @@
 }).call(this);
 
 (function() {
+  Formbuilder.registerField('price', {
+    order: 45,
+    view: "<div class='input-line'>\n  <span class='above-line'>￥</span>\n  <span class='dolars'>\n    <input type='text' />\n    <label>人民币</label>\n  </span>\n</div>",
+    edit: "",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-usd\"></span></span> 价格"
+  });
+
+}).call(this);
+
+(function() {
   Formbuilder.registerField('progress', {
     order: 30,
     view: "<input type='text' />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
@@ -741,7 +751,7 @@
 (function() {
   Formbuilder.registerField('radio', {
     order: 15,
-    view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='radio' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='radio' />\n      其它\n    </label>\n\n    <input type='text' />\n  </div>\n<% } %>",
+    view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <% domId = 'radio_' + i%>\n  <div class='checkbox checkbox'>\n      <input type='radio' id='<%=domId%>' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <label for=\"<%= domId%>\">\n        <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n      </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option checkbox checkbox'>\n      <input type='radio' id='otherRadio' />\n      <label for=\"otherRadio\">\n        其它\n      </label>\n    </label>\n\n    <input type='text' />\n  </div>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-circle-o\"></span></span> 单选",
     defaultAttributes: function(attrs) {
@@ -761,6 +771,17 @@
 }).call(this);
 
 (function() {
+  Formbuilder.registerField('section_break', {
+    order: 0,
+    type: 'non_input',
+    view: "<label class='section-name'><%= rf.get(Formbuilder.options.mappings.LABEL) %></label>\n<p><%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %></p>",
+    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add a longer description to this field'></textarea>",
+    addButton: "<span class='symbol'><span class='fa fa-minus'></span></span> Section Break"
+  });
+
+}).call(this);
+
+(function() {
   Formbuilder.registerField('text', {
     order: 0,
     view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' />",
@@ -770,6 +791,16 @@
       attrs.field_options.size = 'small';
       return attrs;
     }
+  });
+
+}).call(this);
+
+(function() {
+  Formbuilder.registerField('website', {
+    order: 35,
+    view: "<input type='text' placeholder='http://' />",
+    edit: "",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-link\"></span></span> 网址"
   });
 
 }).call(this);
